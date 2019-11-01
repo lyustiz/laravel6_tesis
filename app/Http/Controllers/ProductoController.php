@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\TipoProducto;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -26,7 +27,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('producto_create');
+        $tipoProductos = TipoProducto::get()
+                          ->where('id_status', '1');
+
+        return view('producto_create', compact('tipoProductos'));
     }
 
     /**
