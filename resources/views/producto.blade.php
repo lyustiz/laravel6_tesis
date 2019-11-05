@@ -16,7 +16,7 @@
                      
                     <a class="mb-3 btn btn-sm btn-success" href="producto/create">Nuevo</a> 
 
-                    @foreach ($productos as $producto)
+                    
                         <table class="table table-stripped">
                         <thead>
                             <tr>
@@ -27,8 +27,9 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-
+                        
                         <tbody>
+                        @foreach ($productos as $producto)
                             <tr>
                                 <td>{{ $producto->id_producto }}</td>
                                 <td>{{ $producto->tipoProducto->tipo_producto }}</td>
@@ -39,13 +40,14 @@
                                     <a class="btn btn-sm btn-warning" href="producto/{{$producto->id_producto}}">Del</a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                         
                         
                         </table>
 
 
-                    @endforeach
+                   
 
                     
                 </div>

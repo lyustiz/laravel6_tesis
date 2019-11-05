@@ -22,10 +22,18 @@ class Producto extends Model
     
     protected $hidden     = ['fe_creado','fe_actualizado'];
    
+    
+    
     public function tipoProducto(){
     
         return $this->BelongsTo('App\Models\TipoProducto', 'id_tipo_producto');
     
     }
+
+  /*  public function usuario(){
+    
+        return $this->BelongsTo('App\Models\Usuario', 'id_usuario');
+    
+    }*/
    
 }

@@ -20,11 +20,11 @@ class TipoProducto extends Model
                             'fe_actualizado'
                             ]; 
     
-    protected $hidden     = ['id_tipo_producto','fe_creado','fe_actualizado'];
+    protected $hidden     = ['fe_creado','fe_actualizado'];
    
     public function producto(){
     
-        return $this->HasOne('App\Models\TipoProducto', 'id_tipo_producto');
+        return $this->HasMany('App\Models\Producto', 'id_tipo_producto');
     
     }
 }

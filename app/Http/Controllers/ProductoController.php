@@ -17,6 +17,8 @@ class ProductoController extends Controller
     {
         $productos = Producto::with(['tipoProducto'])
                         ->get();
+
+
         return view('producto', compact('productos'));
     }
 
@@ -41,7 +43,24 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = request()->validate([
+            'tipo_producto'  => 'required',
+            'cantidad'          => 'required',
+        ]);
+
+        
+        $producto = Producto::create([
+            'id_tipo_producto' => $request->tipo_producto,
+            'id_status' => 1,
+            'id_usuario' => 1,
+        ]);
+
+        return $producto;
+
+
+        
+        return [ 'msj' => 'Registro Agregado Correctamente', compact('banco') ];
+
     }
 
     /**
@@ -63,7 +82,11 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        //
+        $tipoProductos = TipoProducto::get()
+                        ->where('id_status', '1');
+
+        return view('producto_edit', compact('producto', 'tipoProductos')) ;
+       
     }
 
     /**
